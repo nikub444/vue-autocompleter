@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+    <script type="text/javascript" src="vue.js"></script>
+
+    <link href="autocompleter.css" rel="stylesheet" />
+    <script src="autocompleter.js"></script>
+    <script src="cities.js"></script>
+</head>
+<body class="home">
+    <div id="app">
+    <div>
+    <v-autocompleter v-bind:options="cities" ref="bottom" @enter='showResults'/>
+    </div>
+    <div id="show">
+        <p>Results</p>
+    </div>
+    </div>
+<script>
+            var app = new Vue({
+                el: '#app',
+                data:{
+                    cities: window.cities,
+                    
+                },
+                methods:{
+                    showResults: function(){
+                        app.$refs.bottom.enterClicked()
+                        return this.change
+                    }
+                }
+                });
+</script>
+</body>
+</html>
